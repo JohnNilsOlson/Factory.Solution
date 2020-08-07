@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Qualification
+@using Factory.Models;
+
+<h3 class="view-title">Dr. Sneuss' Factory</h3>
+<hr />
+<h4 class="view-title">Remove Qualified Technician</h4>
+<h4 class="view-title">@Html.Label($"{ViewBag.Technician.TechnicianName} - {ViewBag.Machine.MachineName}")</h4>
+<div class="flex container">
+  @using (@Html.BeginForm())
+  {
+    <h5>Confirm Qualified Technician Removal</h5>
+    <input type="submit" value="Confirm" class="btn btn-outline-dark" />
+  }
+</div>
