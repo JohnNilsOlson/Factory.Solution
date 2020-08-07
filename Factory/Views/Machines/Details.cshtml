@@ -20,6 +20,8 @@
     @foreach(var join in Model.Technicians)
     {
       <h5>@Html.ActionLink($"{join.Technician.TechnicianName}", "Details", "Technicians", new { id = join.Technician.TechnicianId })</h5>
+      <h7>@Html.ActionLink("Remove Qualified Technician", "DeleteTechnician", new { id = join.QualificationId })</h7>
+      <hr />
     }
   }
 </div>
