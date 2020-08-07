@@ -9,7 +9,7 @@
 <h4 class="view-title">Machine Details</h4>
 <div class="flex container">
   <h4 class="view-title">@Html.Label($"{Model.MachineName}")</h4>
-  <h5 class="link">@Html.ActionLink("Edit Machine Details", "Edit")  |  @Html.ActionLink("Remove Machine", "Delete")</h5>
+  <h5 class="link">@Html.ActionLink("Edit Machine Details", "Edit", new { id = Model.MachineId })  |  @Html.ActionLink("Remove Machine", "Delete", new { id = Model.MachineId })</h5>
   <h5 class="view-title">Qualified Technicians</h5>
   @* @if (@Model.Technicians.Count == 0)
   {
