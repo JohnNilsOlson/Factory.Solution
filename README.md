@@ -70,6 +70,27 @@ MySql Server
 
 * SQL Schema Query
 
+  DROP DATABASE IF EXISTS `johnnils_olson`;
+  CREATE DATABASE `johnnils_olson`;
+
+  USE `johnnils_olson`;
+
+  CREATE TABLE `machines` (
+    `MachineId` int NOT NULL AUTO_INCREMENT,
+    `MachineName` varchar(255) NOT NULL,
+  PRIMARY KEY (`MachineId`)
+
+  CREATE TABLE `technicians` (
+    `TechnicianId` int NOT NULL AUTO_INCREMENT,
+    `TechnicianName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`TechnicianId`)
+
+  CREATE TABLE `qualifications` (
+    `QualificationId` int NOT NULL AUTO_INCREMENT,
+    `MachineId` int NOT NULL,
+    `TechnicianId` int NOT NULL
+  PRIMARY KEY (`QualificationId`)
+
 * Instructions to Run WebApp
   1. In the terminal, change working directory to ./Factory.
   2. Type "dotnet restore".
