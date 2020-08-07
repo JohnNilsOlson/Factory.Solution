@@ -54,5 +54,20 @@ namespace FactoryControllers
       _db.SaveChanges();
       return RedirectToAction("Details", new { id = technician.TechnicianId});
     }
+
+    public ActionResult Delete(int id)
+    {
+      var thisTechnician = _db.Technicians.FirstOrDefault(technician => technician.TechnicianId == id);
+      return View(thisTechnician);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisTechnician = _db.Technicians.FirstOrDefault(technician => technician.TechnicianId == id);
+      _db.Technicians.Remove(thisTechnician);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
