@@ -1,6 +1,7 @@
 using Factory.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,6 +38,8 @@ namespace FactoryControllers
     public ActionResult Details(int id)
     {
       var thisTechnician = _db.Technicians
+        .Include(technician => technician.Machines)
+        .ThenInclude(join => join.Machine)
         .FirstOrDefault(technician => technician.TechnicianId == id);
       return View(thisTechnician);
     }
@@ -68,6 +71,24 @@ namespace FactoryControllers
       _db.Technicians.Remove(thisTechnician);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult AddMachine(int id)
+    {
+      var thisTechnician = _db.Technicians.FirstOrDefault(technician => technician.TechnicianId == id);
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
+      return View(thisTechnician);
+    }
+
+    [HttpPost]
+    public ActionResult AddMachine(Technician technician, int MachineId)
+    {
+      if (MachineId != 0)
+      {
+        _db.Qualifications.Add(new Qualification() { MachineId = MachineId, TechnicianId = technician.TechnicianId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = technician.TechnicianId });
     }
   }
 }
