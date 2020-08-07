@@ -33,5 +33,12 @@ namespace FactoryControllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      var thisTechnician = _db.Technicians
+        .FirstOrDefault(technician => technician.TechnicianId == id);
+      return View(thisTechnician);
+    }
   }
 }
