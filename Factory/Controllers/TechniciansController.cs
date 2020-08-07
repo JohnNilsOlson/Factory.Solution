@@ -40,5 +40,19 @@ namespace FactoryControllers
         .FirstOrDefault(technician => technician.TechnicianId == id);
       return View(thisTechnician);
     }
+
+    public ActionResult Edit(int id)
+    {
+      var thisTechnician = _db.Technicians.FirstOrDefault(technician => technician.TechnicianId == id);
+      return View(thisTechnician);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Technician technician)
+    {
+      _db.Entry(technician).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = technician.TechnicianId});
+    }
   }
 }
