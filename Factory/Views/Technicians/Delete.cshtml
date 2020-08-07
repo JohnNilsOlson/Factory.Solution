@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Technician
+
+<h3 class="view-title">Dr. Sneuss' Factory</h3>
+<hr />
+<h4 class="view-title">@Html.Label($"{Model.TechnicianName}")</h4>
+<h4 class="view-title">Remove Technician</h4>
+<div class="flex container">
+  @using (@Html.BeginForm())
+  {
+    <h5>Confirm Technician Removal</h5>
+    <input type="submit" value="Confirm" class="btn btn-outline-dark" />
+  }
+</div>
