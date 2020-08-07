@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h3 class="view-title">Dr. Sneuss' Factory</h3>
+<hr />
+<h4 class="view-title">@Html.Label($"{Model.MachineName}")</h4>
+<h4 class="view-title">Add Qualified Technicians</h4>
+<div class="flex container">
+  @using (@Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.MachineId)
+    <div class="form-group">
+      @Html.Label("Technician")
+      @Html.DropDownList("TechnicianId", null, new { @class="form-control" })
+    </div>
+    <input type="submit" value="Add Technician" class="btn btn-outline-dark" />
+  }
+</div>
