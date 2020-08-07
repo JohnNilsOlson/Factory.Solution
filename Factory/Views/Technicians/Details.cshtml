@@ -9,9 +9,9 @@
 <h4 class="view-title">Technician Details</h4>
 <div class="flex container">
   <h4 class="view-title">@Html.Label($"{Model.TechnicianName}")</h4>
-  <h5 class="link">@Html.ActionLink("Edit Technician Details", "Edit", new { id = Model.TechnicianId })  |  @Html.ActionLink("Remove Technician", "Delete", new { id = Model.TechnicianId })</h5>
-  <h5 class="view-title">Qualified Technicians</h5>
-  @* @if (@Model.Machines.Count == 0)
+  <h5 class="link">@Html.ActionLink("Edit Technician Details", "Edit", new { id = Model.TechnicianId })  |  @Html.ActionLink("Remove Technician", "Delete", new { id = Model.TechnicianId }) | @Html.ActionLink("Add Machine Qualification", "AddMachine", new { id = Model.TechnicianId })</h5>
+  <h5 class="view-title">Machine Qualifications</h5>
+  @if (@Model.Machines.Count == 0)
   {
     <h5>No Qualifications</h5>
   } 
@@ -19,7 +19,7 @@
   {
     @foreach(var join in Model.Machines)
     {
-      <h3>@Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })</h3>
+      <h5>@Html.ActionLink($"{join.Machine.MachineName}", "Details", "Machines", new { id = join.Machine.MachineId })</h5>
     }
-  } *@
+  }
 </div>
