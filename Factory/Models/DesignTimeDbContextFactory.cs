@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Factory.Models
 {
-  public class FactoryContextFactory : IDesginTimeDbContextFactory<FactoryContext>
+  public class FactoryContextFactory : IDesignTimeDbContextFactory<FactoryContext>
   {
     FactoryContext IDesignTimeDbContextFactory<FactoryContext>.CreateDbContext(string[] args)
     {
@@ -15,7 +15,7 @@ namespace Factory.Models
         .Build();
 
       var builder = new DbContextOptionsBuilder<FactoryContext>();
-      var connectionString = configuration.GetconnectionString("DefaultConnection");
+      var connectionString = configuration.GetConnectionString("DefaultConnection");
 
       builder.UseMySql(connectionString);
 
