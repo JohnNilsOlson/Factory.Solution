@@ -1,6 +1,10 @@
 @{
   Layout = "_Layout";
 }
+
+@using Factory.Models;
+@model List<Factory.Models.Machine>;
+
 <h3 class="view-title">Dr. Sneuss' Factory</h3>
 <hr />
 <h4 class="view-title">Machines</h4>
@@ -11,6 +15,6 @@
   }
   @foreach (Machine machine in Model)
   {
-    <h5 class="entry-link">@html.ActionLink($"{machine.Name}", "Details", new { id = machine.MachineId }</h5>
+    <h5 class="entry-link">@Html.ActionLink($"{machine.MachineName}", "Details", new { id = machine.MachineId })</h5>
   }
 </div>
