@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models;
+@model List<Factory.Models.Technician>;
+
+<h3 class="view-title">Dr. Sneuss' Factory</h3>
+<hr />
+<h4 class="view-title">Technicians</h4>
+<h5 class="link">@Html.ActionLink("Add new Technician", "Create")</h5>
+<hr />
+<div class="flex container">
+  @if (Model.Count == 0)
+  {
+    <h5>None.</h5>
+  }
+  @foreach (Technician technician in Model)
+  {
+    <h5 class="link">@Html.ActionLink($"{technician.TechnicianName}", "Details", new { id = technician.TechnicianId })</h5>
+  }
+</div>
