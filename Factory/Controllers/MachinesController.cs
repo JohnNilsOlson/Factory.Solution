@@ -8,7 +8,7 @@ namespace Factory.Controllers
 {
   public class MachinesController : Controller
   {
-    private readonly Factory.Context _db;
+    private readonly FactoryContext _db;
 
     public MachinesController(FactoryContext db)
     {
