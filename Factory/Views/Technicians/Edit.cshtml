@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Technician
+
+<h3 class="view-title">Dr. Sneuss' Factory</h3>
+<hr />
+<h4 class="view-title">@Html.Label($"{Model.TechnicianName}")</h4>
+<h4 class="view-title">Edit Technician</h4>
+<div class="flex container">
+  @using (@Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.TechnicianId)
+    <div class="form-group">
+      @Html.Label("Technician Name")
+      @Html.TextBoxFor(model => model.TechnicianName, new {@class="form-control"})
+    </div>
+    <input type="submit" value="Apply Changes" class="btn btn-outline-dark" />
+  }
+</div>
