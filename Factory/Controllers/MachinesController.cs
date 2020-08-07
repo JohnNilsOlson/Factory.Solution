@@ -83,6 +83,14 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult AddTechnician(Machine machine, int TechnicianId)
     {
+      IQueryable<Qualification> qualifications = _db.Qualifications.Where(entry => entry.MachineId == machine.MachineId);
+      foreach (Qualification entry in qualifications)
+      {
+        if (entry.TechnicianId == TechnicianId)
+        {
+          return RedirectToAction("Details", new { id = machine.MachineId });
+        }
+      }
       if (TechnicianId != 0)
       {
         _db.Qualifications.Add(new Qualification() { TechnicianId = TechnicianId, MachineId = machine.MachineId });
