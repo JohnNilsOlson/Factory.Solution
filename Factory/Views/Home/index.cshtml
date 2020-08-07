@@ -2,15 +2,25 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models;
+
 <h3 class="view-title">Dr. Sneuss' Factory</h3>
 <div class="row">
   <div class="col-md-2">
   </div>
   <div class="col-md-4">
     <h4 class="sub-title">Machines</h4>
+    @foreach (Machine machine in ViewBag.Machines)
+    {
+      <h5>@Html.ActionLink($"{machine.MachineName}", "Details", "Machines", new { id = machine.MachineId })</h5>
+    }
   </div>
   <div class="col-md-4">
     <h4 class="sub-title">Technicians</h4>
+    @foreach (Technician technician in ViewBag.Technicians)
+    {
+      <h5>@Html.ActionLink($"{technician.TechnicianName}", "Details", "Technicians", new { id = technician.TechnicianId })</h5>
+    }
   </div>
   <div class="col-md-2">
   </div>
